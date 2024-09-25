@@ -51,7 +51,6 @@ body > header {
         &::after {
           margin-inline: auto 0;
         }
-        /* border-bottom: 1px solid var(--text-color); */
       }
     }
   }
@@ -89,7 +88,7 @@ body > header {
     }
     &::after {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) rotateZ(0);
     }
   }
 
@@ -100,7 +99,7 @@ body > header {
     }
     &::after {
       opacity: 0;
-      transform: scale(0.5);
+      transform: scale(0.5) rotateZ(360deg);
     }
   }
 }
