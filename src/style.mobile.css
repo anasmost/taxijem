@@ -1,0 +1,126 @@
+html {
+  scrollbar-width: thin;
+}
+
+:root {
+  font-size: 0.8rem;
+}
+
+@media screen and (max-height: 700px) {
+  h2 {
+    font-size: 1.75em;
+  }
+}
+
+body > header {
+  position: relative;
+
+  nav {
+    position: fixed;
+    clip-path: circle(0% at 200% -50%);
+    transition: clip-path 0.5s;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100svh;
+    width: 100svw;
+    background: linear-gradient(
+      -120deg,
+      var(--background-color) 30%,
+      60%,
+      var(--primary-color) 90%,
+      transparent
+    );
+    background: linear-gradient(
+      -120deg,
+      var(--background-color),
+      40%,
+      var(--primary-color) 70%,
+      95%,
+      transparent
+    );
+    padding: 12svh 5svw;
+    ul {
+      flex-direction: column;
+      align-items: end;
+      text-align: end;
+      font-size: 1.25em;
+
+      li {
+        width: 12ch;
+        &::after {
+          margin-inline: auto 0;
+        }
+        /* border-bottom: 1px solid var(--text-color); */
+      }
+    }
+  }
+}
+
+#menu-toggler:checked ~ nav {
+  clip-path: circle(200% at 100% 0);
+}
+
+#menu-toggler {
+  display: grid;
+  appearance: none;
+  z-index: 1;
+  padding: 5px 0 5px 5px;
+  cursor: pointer;
+
+  &::before {
+    content: "☰";
+  }
+  &::after {
+    content: "✖";
+  }
+  &::before,
+  &::after {
+    grid-area: 1 / 1 / 2 / 2;
+    display: inline-block;
+    font-size: 2.5em;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  &:checked {
+    &::before {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:not(:checked) {
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+    &::after {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+  }
+}
+
+#home {
+  > .container {
+    address {
+      grid-column: 2 / span 1;
+      place-self: center start;
+    }
+    nav {
+      grid-column: 2 / span 1;
+      grid-row: 4;
+      justify-self: start;
+    }
+  }
+}
+
+#services {
+  ul {
+    font-size: 1.2em;
+  }
+}
